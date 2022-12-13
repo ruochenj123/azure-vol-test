@@ -2,9 +2,10 @@
 #include <stdlib.h>
 
 void* S3VLFileCallbacks::S3VL_file_create(const char *name, unsigned flags, hid_t fcpl_id, hid_t fapl_id, hid_t dxpl_id, void **req) {
-	string azure_connection_string = std::getenv("AZURE_STORAGE_CONNECTION_STRING");
+	string azure_connection_string = getenv("AZURE_STORAGE_CONNECTION_STRING");
+	string bucket_name = getenv("BUCKET_NAME");
     auto containerClient
-      = BlobContainerClient::CreateFromConnectionString(azure_connection_string, "hyperslab-test");
+      = BlobContainerClient::CreateFromConnectionString(azure_connection_string, bucket_name);
 
     containerClient.CreateIfNotExists();
     BlockBlobClient blclient = containerClient.GetBlockBlobClient("test");

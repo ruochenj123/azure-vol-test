@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 3.2)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS "-O0")
@@ -8,7 +8,7 @@ project (s3_vol DESCRIPTION "S3 VOL connector")
 
 
 # Find HDF5
-SET(CMAKE_INSTALL_PREFIX /home/jiang.2091a/Desktop/hdf5/build/)
+
 find_package (HDF5 1.13 COMPONENTS C REQUIRED)
 link_directories (${HDF5_LIBRARY_DIRS})
 include_directories (${HDF5_INCLUDE_DIR})
